@@ -41,5 +41,30 @@ class TestRun:
         pytest.fail(message)
 
     @classmethod
+    def workaround(cls, message):
+        if cls.LOGGER:
+            cls.LOGGER.workaround(message)
+
+    @classmethod
+    def warning(cls, message):
+        if cls.LOGGER:
+            cls.LOGGER.warning(message)
+
+    @classmethod
+    def skip(cls, message):
+        if cls.LOGGER:
+            cls.LOGGER.skip(message)
+
+    @classmethod
+    def error(cls, message):
+        if cls.LOGGER:
+            cls.LOGGER.error(message)
+
+    @classmethod
+    def critical(cls, message):
+        if cls.LOGGER:
+            cls.LOGGER.critical(message)
+
+    @classmethod
     def block(cls, message):
         raise Blocked(message)
