@@ -19,6 +19,10 @@ class BaseLogResult(Enum):
     CRITICAL = 18
 
 
+def test_failed(result: BaseLogResult):
+    return result.value >= BaseLogResult.FAILED.value
+
+
 def escape(msg):
     return sub(u'[^\u0020-\uD7FF\u0009\u000A\u000D\uE000-\uFFFD\U00010000-\U0010FFFF]+', '', msg)
 

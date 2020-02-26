@@ -13,7 +13,7 @@ from storage_devices.disk import Disk
 from test_utils import disk_finder
 from test_utils.dut import Dut
 from core.plugins import PluginManager
-from log.base_log import BaseLogResult
+from log.base_log import test_failed
 import core.test_run
 import traceback
 
@@ -153,7 +153,7 @@ def __makereport(cls, item, call, res):
         else:
             cls.LOGGER.exception(msg)
 
-    if res.when == "call" and cls.LOGGER.get_result() == BaseLogResult.FAILED:
+    if res.when == "call" and test_failed(cls.LOGGER.get_result()):
         res.outcome = "failed"
         # To print additional message in final test report, assgin it to res.longrepr
 
